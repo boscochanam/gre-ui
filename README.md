@@ -1,7 +1,7 @@
-# gre-section-drill
+# gre-test-ui
 
-Unofficial single-file **section player** for GRE-style practice.  
-You bring the questions. This repo is the on-screen chrome: one item at a time, Back / Next / Review, Quant calculator, Text Completion columns, Sentence Equivalence checkboxes, Reading Comp split pane.
+Unofficial **on-screen GRE section UI**.  
+Not a question bank. You bring the items; this is the chrome: one question at a time, Back / Next / Review, Quant calculator, Text Completion columns, Sentence Equivalence boxes, Reading Comp split pane.
 
 **Not affiliated with ETS.** GRE® is a registered trademark of ETS. This is an independent practice shell, not an official test, not POWERPREP®, and it does not include official items or scores.
 
