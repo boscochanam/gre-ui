@@ -1,0 +1,81 @@
+{
+  "quiz_id": "sample-all-types",
+  "title": "Sample section — all item types",
+  "source": "Original demo items (not from any test publisher)",
+  "questions": [
+    {
+      "type": "tc",
+      "prompt": "The lab notebook was so (i)________ that a new teammate could rerun every trial without asking a single question, yet the prose stayed (ii)________ enough that it never felt like a manual.",
+      "blanks": [
+        {"label": "Blank (i)", "options": ["opaque", "meticulous", "theatrical"]},
+        {"label": "Blank (ii)", "options": ["readable", "ornate", "hostile"]}
+      ],
+      "answer": ["B", "A"],
+      "explanation": "Rerunning trials without questions → meticulous. Not like a manual → readable.",
+      "src": "Original demo · TC"
+    },
+    {
+      "type": "se",
+      "prompt": "Because the archive had no index, the intern's search was necessarily ________: she opened boxes at random and hoped a label would appear.",
+      "options": [
+        "(A) methodical",
+        "(B) haphazard",
+        "(C) exhaustive",
+        "(D) desultory",
+        "(E) forensic",
+        "(F) ceremonial"
+      ],
+      "answer": ["B", "D"],
+      "explanation": "No index + random boxes → haphazard / desultory.",
+      "src": "Original demo · SE"
+    },
+    {
+      "type": "rc",
+      "passage_label": "Question 3 is based on this passage.",
+      "passage": "<p>City orchardists used to spray weekly. After a dry spring, they switched to watering only when leaf-curl appeared. Fruit size dropped, but fungal spots nearly vanished. The growers concluded that less water, not less spray, caused the cleaner fruit.</p>",
+      "prompt": "Which finding most weakens the growers' conclusion?",
+      "options": [
+        "(A) Leaf-curl is more common after wet springs than dry ones.",
+        "(B) The new schedule also cut the number of spray days in half.",
+        "(C) Fruit size is mainly set in the first three weeks after bloom.",
+        "(D) Nearby gardens that kept weekly spraying had larger fruit.",
+        "(E) Customers prefer unmarked fruit even when it is smaller."
+      ],
+      "answer": "B",
+      "explanation": "If spraying also fell, the cleaner fruit may be from less spray, not less water.",
+      "src": "Original demo · RC"
+    },
+    {
+      "type": "qc",
+      "prompt": "$n$ is a positive integer.",
+      "qa": "$2n + 2$",
+      "qb": "$2(n + 1)$",
+      "answer": "C",
+      "explanation": "Both simplify to $2n+2$.",
+      "src": "Original demo · QC"
+    },
+    {
+      "type": "mc",
+      "prompt": "If $3x - 6 = 15$, what is $x$?",
+      "options": ["(A) $3$", "(B) $5$", "(C) $7$", "(D) $9$", "(E) $11$"],
+      "answer": "C",
+      "explanation": "$3x = 21$, so $x = 7$.",
+      "src": "Original demo · MC"
+    },
+    {
+      "type": "multi",
+      "prompt": "Which of the following must be even? Indicate all that apply.",
+      "options": ["(A) $2k$", "(B) $2k+1$", "(C) $k(k+1)$", "(D) $k^2$"],
+      "answer": ["A", "C"],
+      "explanation": "$2k$ is even. $k(k+1)$ is two consecutive integers, so even.",
+      "src": "Original demo · multi"
+    },
+    {
+      "type": "num",
+      "prompt": "What is $8 \\times 7 + 4$?",
+      "answer": 60,
+      "explanation": "$56 + 4 = 60$.",
+      "src": "Original demo · numeric"
+    }
+  ]
+}
