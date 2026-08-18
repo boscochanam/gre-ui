@@ -1,74 +1,109 @@
 # gre-ui
 
-Unofficial **on-screen GRE interface**.  
-Not a question bank. You bring the items; this is the chrome: one question at a time, Back / Next / Review, Quant calculator, Text Completion columns, Sentence Equivalence boxes, Reading Comp split pane.
+The computer GRE has a look. Your practice HTML shouldn’t look like a blog.
 
-**Not affiliated with ETS.** GRE® is a registered trademark of ETS. This is an independent practice shell, not an official test, not POWERPREP®, and it does not include official items or scores.
+**gre-ui** turns a JSON file into a single-page section: one item on screen, Back / Next / Review, a Quant calculator you can drag, Text Completion columns, Sentence Equivalence boxes, Reading Comp split pane. You bring the questions. This is only the chrome.
 
-## Why it exists
+<p align="center">
+  <img src="docs/screenshots/qc-calc.png" alt="Quant Comparison with on-screen calculator" width="920">
+</p>
 
-The computer-delivered GRE has a specific muscle memory (header, status strip, footer hint, calculator). Most HTML quizzes look like blogs. This generator emits a self-contained page that *feels* like a section so drills transfer. Content is yours — JSON in, HTML out.
+<p align="center">
+  <em>Unofficial. Not ETS, not POWERPREP, not a question bank, not a scored test.</em>
+</p>
 
-## Quick start
+## Open the sample
+
+No build step. Clone and open the file:
+
+```bash
+git clone https://github.com/boscochanam/gre-ui.git
+cd gre-ui
+# open examples/sample.html in a browser
+```
+
+Or regenerate it:
 
 ```bash
 python3 scripts/make_quiz.py examples/sample.json examples/sample.html
-# open examples/sample.html
 ```
 
-Collect answers (optional):
+Demo items in `examples/` are original. Do not commit real test-publisher questions.
+
+## 30-second quick start
 
 ```bash
-python3 scripts/make_quiz.py examples/sample.json /tmp/drill/index.html
-python3 scripts/quiz_server.py 8899 /tmp/drill ~/drill-results
+python3 scripts/make_quiz.py my-section.json out.html
 ```
 
-`POST /submit` stores one record per `(quiz_id, client_id)`.
+That’s the whole product: JSON in, one HTML file out. Host it anywhere static (`python3 -m http.server`, Cloudflare Pages, a USB stick).
 
-## Question JSON
+Collect answers on a small local server:
 
-`type` is one of: `mc` · `multi` · `qc` · `num` · `tc` · `se` · `rc`
+```bash
+python3 scripts/make_quiz.py my-section.json /tmp/section/index.html
+python3 scripts/quiz_server.py 8899 /tmp/section ~/section-results
+```
+
+`POST /submit` keeps one record per `(quiz_id, client_id)`. Resubmit overwrites; history is in `history.jsonl`.
+
+## What it looks like
+
+| Verbal | Quant / nav |
+|--------|-------------|
+| ![Text Completion](docs/screenshots/tc.png) | ![Calculator](docs/screenshots/qc-calc.png) |
+| ![Reading Comp](docs/screenshots/rc.png) | ![Review grid](docs/screenshots/review.png) |
+
+Phone (iPhone-width):
+
+<p align="center">
+  <img src="docs/screenshots/mobile-tc.png" alt="Text Completion on a phone" width="320">
+</p>
+
+After **Check** or **Skip**, those buttons become **Next** (last item → **Review**). The calculator is hidden on verbal items, same as test day.
+
+## Item types
+
+`mc` · `multi` · `qc` · `num` · `tc` · `se` · `rc`
 
 ```json
 {
-  "quiz_id": "my-drill",
+  "quiz_id": "wk3-algebra",
   "title": "Algebra section",
   "source": "my notes",
   "questions": [
     {
-      "type": "mc",
-      "prompt": "If $2x = 10$, what is $x$?",
-      "options": ["(A) 3", "(B) 5", "(C) 7"],
-      "answer": "B",
-      "explanation": "$x = 5$.",
-      "src": "home brew · Q1"
+      "type": "qc",
+      "prompt": "$n$ is a positive integer.",
+      "qa": "$2n + 2$",
+      "qb": "$2(n + 1)$",
+      "answer": "C",
+      "explanation": "Both are $2n+2$."
     }
   ]
 }
 ```
 
-| Type | Extra fields | `answer` |
-|------|----------------|----------|
+| Type | You supply | `answer` |
+|------|------------|----------|
 | `mc` | `options` | `"B"` |
 | `multi` | `options` | `["A","C"]` |
-| `qc` | `qa`, `qb` (A–D choices filled in) | `"C"` |
+| `qc` | `qa`, `qb` (A–D filled in) | `"C"` |
 | `num` | — | `60` |
 | `tc` | `blanks: [{label, options}]` | `["B","A"]` in blank order |
 | `se` | six `options` | two letters |
-| `rc` | `passage`, `passage_label` | letter or list |
+| `rc` | `passage`, `passage_label` | letter (or a list) |
 
-Prompts/explanations may include KaTeX (`$...$`). After Check or Skip, those buttons become **Next** (last item → **Review**). Calculator is hidden on verbal items.
-
-`examples/sample.json` is **original demo copy** written for this repo. Do not add real test-publisher items.
+Prompts and explanations can use KaTeX (`$...$`).
 
 ## What this is not
 
-- Not an official GRE, POWERPREP, or ETS product
-- Not a question bank and not a scoring service
-- Not a pixel-for-pixel reproduction of any ETS asset or logo
+- Not an official GRE®, POWERPREP®, or ETS product
+- Not a question dump and not a scoring service
+- Not a copy of any ETS logo or asset
 
-Trademarks mentioned here belong to their owners and are used only to describe the kind of practice the shell is for.
+GRE® is a registered trademark of ETS. The name is used here only to say what kind of screen this practice shell is for.
 
 ## License
 
-MIT. See `LICENSE`.
+MIT. See [LICENSE](LICENSE).
