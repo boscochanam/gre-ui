@@ -1,6 +1,6 @@
-# gre-test-ui
+# gre-ui
 
-Unofficial **on-screen GRE section UI**.  
+Unofficial **on-screen GRE interface**.  
 Not a question bank. You bring the items; this is the chrome: one question at a time, Back / Next / Review, Quant calculator, Text Completion columns, Sentence Equivalence boxes, Reading Comp split pane.
 
 **Not affiliated with ETS.** GRE® is a registered trademark of ETS. This is an independent practice shell, not an official test, not POWERPREP®, and it does not include official items or scores.
